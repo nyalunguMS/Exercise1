@@ -16,7 +16,7 @@ let students = [{
 },{
     name:"anco",
     age:26,
-    mark:87,
+    mark:97,
     course:"JS"
 },{
     name:"Maba",
@@ -37,10 +37,11 @@ displayStudents(students);
 
 function calculateAverage(list) {
     // Calculate and return the average mark
-    total = 0;
-    for (student of list){
-        total+=student.mark;
-    }
+    let total = 0;
+    list.forEach((student) => {
+        total += student.mark;
+    })
+
     return average = total/list.length;
 }
 console.log("Average mark is "+calculateAverage(students)+"%");
@@ -48,25 +49,31 @@ console.log("Average mark is "+calculateAverage(students)+"%");
 function findTopStudent(list) {
     // Find and return the student with the highest mark
 
-    highest = 0;
-    for (let i = 0; i < list.length; i++){
-        if(list[i].mark > highest){
-            highest = list[i].mark;
-            name = list[i].name;
+    let highest = 0;
+    let name = "";
+    list.forEach((student) => {
+        if(highest < student.mark){
+            highest=student.mark;
+            name = student.name;
+
         }
-    }
+    })
+
+
     return name+" has the highest mark with "+highest+"%";
 }
 console.log(findTopStudent(students));
 
 function findPassedStudents(list) {
     // Return students who have a mark of 50 or higher
-    passed =[];
-    for (student of list){
+    let passed =[];
+    list.forEach((student) =>{
         if(student.mark > 50){
             passed.push(student.name);
         }
-    }
+    })
+
+
     return passed;
 }
 
